@@ -31,16 +31,16 @@ class Stopwatch extends Component {
     }
     update = ()=>{
         const {status, start} = this.state;
-
         if (status === 'running'){
-            this.state.elapsed = new Date().getTime() - start;
+            this.setState({
+                elapsed: new Date().getTime() - start
+            });
             setTimeout(this.update, 10);
         }
 
     }
     render(){
         const {status, elapsed} = this.state;
-
         return ( 
             <div className="jumbotron">
                 <h1 className="display-3"><Time elapsed={elapsed}/></h1>
